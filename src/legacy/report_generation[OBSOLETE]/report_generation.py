@@ -76,7 +76,7 @@ class ATLAS:
         context["pic_ori"] = pic_ori
 
         pic_sim = Simplified_pictures + "\\" + str(i + 2) + ".jpg"
-        if df_row["CELL IDs"] == "DELETED" or os.path.exists(pic_sim) == False:
+        if df_row["CELL IDs"] == "DELETED" or os.path.exists(pic_sim) is False:
             pic_sim = "              DELETED"
             context["dcf"] = "N/A"
             context["comment"] = "Deleted component"
@@ -95,7 +95,7 @@ def enovia_code_from_df(df_row):
     for n in names:
         try:
             return re.search("\#.{6}$", n).group()[1:]
-        except:
+        except AttributeError:
             pass
     return "N/A"
 
