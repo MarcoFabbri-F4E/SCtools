@@ -3,13 +3,25 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+   :caption: Contents:
+   
+   usage
+   csv_workflow
+   csv_workflow/prepare_cad
+   csv_workflow/csv_generator
+   cad_to_mcnp_comparison
+
 SCtools documentation
 =====================
 
 This is the documentation for SCtools, a repository to manipulate and analyze CAD files 
 in SpaceClaim and their related MCNP input files.
 
-SCtools is a collection of several scripts many of them written in IronPython that can 
+SCtools is a collection of several scripts. Many of them are written in IronPython and can 
 be imported directly into SpaceClaim. Other scripts are meant to be run with CPython. 
 Please refer to the documentation of each tool to understand how to use it.
 
@@ -81,13 +93,3 @@ List of tools
 
    This project is under active development.
 
-
-.. toctree::
-   :hidden:
-   :maxdepth: 2
-   :caption: Contents:
-   
-   csv_workflow
-   csv_workflow/prepare_cad
-   csv_workflow/csv_generator
-   cad_to_mcnp_comparison
