@@ -46,7 +46,7 @@ the file again.
 1. Drag and drop the script file into the SpaceClaim window.
 2. Click on the little arrow attached to the run button and select **Run** instead of **Debug**.
 3. Click on the little arrow atatched to the chain button and select **Publish as tool**.
-4. Click on the chain button.
+4. Click on the chain button (this will avoid that the script window opens up again when the script is executed).
 5. Fill in the box with a name for the tool and click **OK**.
 6. Click again on the chain button and close the script window (click **No**, no need to save the script).
 

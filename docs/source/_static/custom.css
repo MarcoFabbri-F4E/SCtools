@@ -1,0 +1,24 @@
+
+.video-popup {
+    position: relative;
+    display: inline-block;
+}
+
+.video-popup .video-content {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-5%);
+    width: 300px;
+    z-index: 1;
+}
+
+.video-popup:hover .video-content {
+    display: block;
+}
+
+.video-popup .video-content video {
+    width: 100%;
+    height: auto;
+}
