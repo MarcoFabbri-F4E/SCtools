@@ -1,6 +1,8 @@
 Legacy
 ======
 
+Work in progress.
+
 Report generation
 -----------------
 

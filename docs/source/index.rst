@@ -18,8 +18,8 @@ The source code is hosted on `GitHub <https://github.com/Fusion4Energy/SCtools>`
 .. raw:: html
 
    <div style="text-align: center;">
-     <video style="width: 70%; max-width: 1000px;" controls autoplay loop muted>
-       <source src="_static/Media1.mp4" type="video/mp4">
+     <video style="width: 60%; max-width: 1080px;" controls autoplay loop muted>
+       <source src="_static/SpaceClaim_adjust_volume.mp4" type="video/mp4">
        Your browser does not support the video tag.
      </video>
    </div>
