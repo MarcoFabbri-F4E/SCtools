@@ -111,7 +111,7 @@ valuable asset during the development of a MCNP model.
     file and therefore the CSV file should not be open in any other program like Excel.
 
 Detect volumes to adjust
------------------------
+------------------------
 
 This script is run in SpaceClaim, it requires the CSV file generated with :ref:`CSV generator`.
 The tool highlights the components that exceed a maximum volume deviation from the 

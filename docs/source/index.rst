@@ -94,8 +94,11 @@ List of tools
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-   
-   usage
-   csv_workflow
+  :maxdepth: 3
+  :hidden:
+
+  usage
+  csv_workflow
+  cad_to_mcnp_comparison
+  miscellaneous
+  legacy
