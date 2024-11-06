@@ -3,15 +3,6 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-
-.. toctree::
-   :hidden:
-   :maxdepth: 2
-   :caption: Contents:
-   
-   usage
-   csv_workflow
-
 SCtools documentation
 =====================
 
@@ -89,3 +80,22 @@ List of tools
 
    This project is under active development.
 
+.. raw:: html
+
+   <div class="video-popup">
+       <a href="Adjust volume">Hover over me</a>
+       <div class="video-content">
+           <video controls autoplay loop muted>
+               <source src="_static/Media1.mp4" type="video/mp4">
+               Your browser does not support the video tag.
+           </video>
+       </div>
+   </div>
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+   
+   usage
+   csv_workflow

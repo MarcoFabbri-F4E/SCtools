@@ -25,6 +25,11 @@ exclude_patterns = []
 html_theme = "pydata_sphinx_theme"
 html_static_path = ["_static"]
 html_logo = "_static/logo.png"
+html_theme_options = {
+    "show_nav_level": 2,  # Adjust the number of levels shown in the sidebar
+    "navigation_depth": 4,  # Adjust the depth of the navigation tree
+    "collapse_navigation": False,  # Keep the navigation expanded
+}
 
 # Include custom CSS file
 def setup(app):

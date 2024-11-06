@@ -176,29 +176,80 @@ colored with a transparent blue.
 Show by material
 ----------------
 
-asdf
+This script is run in SpaceClaim, it requires the CSV file generated with :ref:`CSV generator`.
+This tool allows the user to select a set of materials and display only the components
+that are made of those materials as read form the CSV file (the **MATERIAL** column).  
+When executing the script, a new window will pop up with a list of all the materials.
+The user can select one or more materials and click on the **Finish** button to display
+them.
+
+.. raw:: html
+
+   <div style="text-align: center;">
+     <video style="width: 95%; max-width: 1080px;" controls autoplay loop muted>
+       <source src="_static/SpaceClaim_show_by_material.mp4" type="video/mp4">
+       Your browser does not support the video tag.
+     </video>
+   </div>
+
+.. note::
+
+    The **MATERIAL** column of the CSV file is meant to be filled by the user. This 
+    tool is very useful along that process. If no material has been specified yet for
+    a component, it will be able to be selected as *No material specified*.
 
 Save STEP
 ---------
 
-asdf
+This script is run in SpaceClaim, it requires the CSV file generated with :ref:`CSV generator`.
+This tool saves the CAD model as a STEP file a way that the MCNP cell IDs after the conversion
+with a tool like GEOUNED will match the order of the CSV file components.
 
 MCNP materials from CSV
 -----------------------
 
-vvvvs
+This script is run in a CPython environment, it requires the MCNP input, the CSV file and,
+optionally, a file **named materials_ids.csv**.
+This tool updates the MCNP file with the materials, densities, density correction factors
+and component names from the CSV file.
 
-.. raw:: html
+The **named materials_ids.csv** file is a CSV file that contains the correspondence between
+the material names in the CSV file and the material IDs in the MCNP file. The file should
+have the following columns: **MATERIAL**, **ID**. The **MATERIAL** column contains the 
+material names as they appear in the CSV file and the **ID** column contains the number 
+that will be used in the MCNP file to identify that material. If the file **materials_ids.csv** 
+is not present, or if a material is not found in the file, the script will automatically
+assign a new material ID. After the script is executed, the materials used in the model and their respective IDs
+will be printed in the console.
 
-   <div class="video-popup">
-       <a href="Adjust volume">Hover over me</a>
-       <div class="video-content">
-           <video controls autoplay loop muted>
-               <source src="_static/Media1.mp4" type="video/mp4">
-               Your browser does not support the video tag.
-           </video>
-       </div>
-   </div>
+.. image:: _static/image_material_ids.png
+   :alt: Example of a filled CSV file.
+   :align: center
+   :width: 50%
 
+.. note::
 
+    The user can specify void cells in the CSV file by using the material name *Void*.
 
+At the top of the script there are some constant variables that need to be specified by
+the user: **MCNP_INPUT_FILEPATH**, **CSV_FILEPATH**, **MATERIAL_IDS_FILEPATH** and
+**FIRST_CELL_ID**. The first three are the paths to the MCNP input file, the CSV file and
+the **materials_ids.csv** file. The last one is the first cell ID number of the model in
+the MCNP input file. This is necessary as in the CSV file the **CELL IDs** column always
+start with 1.
+
+The execution of this script generates a new MCNP file with the same name but with 
+the suffix **[materials_added]**. The changes perfomed to the file are:
+
+#. The material IDs are assigned to the MCNP cells.
+#. The densities are assigned to the MCNP cells after being multiplied by their density correction factor (if any).
+#. A comment is added to the first line of the cell with:
+    
+    #. The component ID.
+    #. The name of the component as seen in the last non empty **Level X** column.
+    #. The density correction factor employed (if any).
+
+.. image:: _static/mcnp_input_file.png
+   :alt: Example of a filled CSV file.
+   :align: center
+   :width: 70%
