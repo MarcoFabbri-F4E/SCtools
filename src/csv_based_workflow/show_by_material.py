@@ -73,7 +73,7 @@ def get_selected_materials(materials):
                 selected_materials.append("")
             else:
                 selected_materials.append(material)
-        return form.selected_materials
+        return selected_materials
     MessageBox.Show("No materials selected!")
     raise ValueError
 
