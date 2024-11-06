@@ -14,14 +14,15 @@ also be modified and filled by the user manually.
 Pipeline
 --------
 
-1. The CAD model is cleaned by removing the clearly out of place components.
-2. The :ref:`Prepare CAD` script is run to generate a new SpaceClaim document where all the components are independent of each other and each has a unique ID.
-3. The :ref:`CSV generator` script is run to generate the CSV file.
-4. The user performs the simplification of the model in SpaceClaim. During the simplification, the scritps :ref:`Detect volumes to adjust` and :ref:`Adjust volume` can be used to highlight and automatically adjust the components that exceed the maximum volume deviation.
-5. The user fills in the CSV file with information regarding the materials and densities of the components. The Excel filtering features can be very beneficial in the manipulation and filling of the CSV. The script :ref:`Show by material` is very useful to study in SpaceClaim the material distribution among the components.
-6. The :ref:`Save STEP` script is run to save the CAD model as a STEP file in a way that the MCNP cell IDs will match the order of the CAD components.
-7. The conversion of the previous STEP file to an MCNP input file is performed with another tool like GEOUNED.
-8. The :ref:`MCNP materials from CSV` script is run to update the MCNP file with the materials, densities, density correction factors and component names from the CSV file.
+#. The CAD model is cleaned by removing the clearly out of place components or clearly clashing geometry.
+#. :ref:`Prepare CAD` is executed to generate a new SpaceClaim document where all the components are independent of each other and each has a unique ID.
+#. :ref:`CSV generator` is executed to generate the CSV file.
+#. The user performs the simplification of the model in SpaceClaim. During the simplification, the scritps :ref:`Detect volumes to adjust` and :ref:`Adjust volume` can be used to highlight and automatically adjust the components that exceed the maximum volume deviation.
+#. The user fills in the CSV file with information regarding the materials and densities of the components. The Excel filtering features can be very beneficial in the manipulation and filling of the CSV. The script :ref:`Show by material` is very useful to study in SpaceClaim the material distribution among the components.
+#. :ref:`CSV generator` is executed one last time to update the CSV with the final simplified volume information. 
+#. :ref:`Save STEP` is executed to save the CAD model as a STEP file in a way that the MCNP cell IDs will match the order of the CAD components.
+#. The conversion of the previous STEP file to an MCNP input file is performed with another tool like GEOUNED.
+#. :ref:`MCNP materials from CSV` is executed to update the MCNP file with the materials, densities, density correction factors and component names from the CSV file.
 
 Prepare CAD
 -----------
@@ -112,12 +113,65 @@ valuable asset during the development of a MCNP model.
 Detect volumes to adjust
 -----------------------
 
-asdfasdf 
+This script is run in SpaceClaim, it requires the CSV file generated with :ref:`CSV generator`.
+The tool highlights the components that exceed a maximum volume deviation from the 
+original volume that appears in the CSV. Components that exceed the limit will be colored in opaque red.
+To easily spot the red components, all the other components which comply with the volume
+requirements will be colored with a transparent blue.
+
+.. raw:: html
+
+   <div style="text-align: center;">
+     <video style="width: 95%; max-width: 1080px;" controls autoplay loop muted>
+       <source src="_static/SpaceClaim_detect_volumes_to_adjust.mp4" type="video/mp4">
+       Your browser does not support the video tag.
+     </video>
+   </div>
+
+.. note::
+
+    The default maximum volume deviation is 1%. The user can modify this value as 
+    explained in :ref:`Edit the parameter of a published tool`.
+
+.. tip::
+
+    This script synergizes extremely well with :ref:`Adjust volume`. The two in combination
+    make complying with volume requirements an almost trivial process. 
 
 Adjust volume
 -------------
 
-sdf
+This script is run in SpaceClaim, it requires the CSV file generated with :ref:`CSV generator`.
+This tool automatically extrude a face/s of a component to match the volume of the component 
+to the one in the CSV file. The faces will be extruded in the correct direction until
+the current volume falls inside a maximum volume deviation.
+
+To execute the tool, the user must first select the face/s of the component that will be
+extruded and the run the script. After the script is executed, the component will be 
+colored with a transparent blue.
+
+.. raw:: html
+
+   <div style="text-align: center;">
+     <video style="width: 95%; max-width: 1080px;" controls autoplay loop muted>
+       <source src="_static/SpaceClaim_adjust_volume.mp4" type="video/mp4">
+       Your browser does not support the video tag.
+     </video>
+   </div>
+
+.. warning::
+    
+    If the extrusion of a face is so much that it makes the face dissappear, the script 
+    execution will fail. The user must select the faces considering this possibility.
+
+    The user should be aware of the possible new geometry clashes that may arise after 
+    the face/s extrusion to select the most appropiate faces.
+
+.. tip::
+
+    This script synergizes extremely well with :ref:`Adjust volume`. As the color of the
+    adjusted components matches those colored with *Adjust volume*, the process is 
+    stramlined.
 
 Show by material
 ----------------

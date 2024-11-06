@@ -64,6 +64,30 @@ Now the script will be always available:
      </video>
    </div>
 
+Edit the parameter of a published tool
+--------------------------------------
+
+Some scripts have default parameters in the form of Python constant variables at the 
+top of the file. These parameters can be modified by the user by editing the tool. This
+change can be done by simply deleting the tool and publishing it again after applying a 
+modification to the file. Alternatively, the tool can be edited directly in SpaceClaim
+following these steps:
+
+1. Click on the little arrow below the tool button.
+2. Click on **Edit script**, this will open the script panel to the right.
+3. Modify the parameters in the script.
+4. Click on the chain button (this will avoid that the script window opens up again when the script is executed).
+5. Close the script window (click **No**, no need to save the script).
+
+.. raw:: html
+
+   <div style="text-align: center;">
+     <video style="width: 95%; max-width: 1080px;" controls autoplay loop muted>
+       <source src="_static/SpaceClaim_edit_a_published_tool.mp4" type="video/mp4">
+       Your browser does not support the video tag.
+     </video>
+   </div>
+
 CPython scripts
 ---------------
 

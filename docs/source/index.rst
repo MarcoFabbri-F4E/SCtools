@@ -44,7 +44,7 @@ List of tools
     each a unique ID.
   * :ref:`CSV generator`. Generates or updates the CSV file
     that contains all the information of the model as read by SpaceClaim.
-  * :ref:`Detec volumes to adjust`. Highlights 
+  * :ref:`Detect volumes to adjust`. Highlights 
     the components that exceed the maximum volume deviation after simplification.
   * :ref:`Adjust volume`. Automatically extrudes the
     selected faces of a component to match the original volume of the component.
@@ -64,6 +64,8 @@ List of tools
 * :ref:`Miscellaneous`. Set of one-off scripts that perform an 
   independent task.
 
+  * :ref:`Elbow to cylinder`. Converts the toroidal elbows typically
+    found in pipes in a set of cylinders.
   * :ref:`Detect torus`. Highlights all the bodies that 
     contain a toroidal surface.
   * :ref:`FMESH tally generator`. Generates a 
@@ -74,9 +76,6 @@ List of tools
   * :ref:`Simplify toroidal profiles`. Simplifies the toroidal profile of a body 
     substituing the curves of its section with straight lines with a given angle between
     them.
-
-* :ref:`Elbow to cylinder`. Converts the toroidal elbows typically
-  found in pipes in a set of cylinders.
 
 * :ref:`Legacy`. Set of scripts that are either obsolete or outdated but may be useful
   in an future update.
