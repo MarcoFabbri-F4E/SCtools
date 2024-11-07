@@ -103,7 +103,7 @@ valuable asset during the development of a MCNP model.
 
 .. attention::
 
-    Before running this script the CAD shoudl have been prepared with the
+    Before running this script the CAD should have been prepared with the
     :ref:`Prepare CAD` script.
 
 .. warning::
