@@ -41,6 +41,8 @@ form **ComponentX** where **X** is a number, a unique identifier.
 
 .. attention::
 
+    This script can take a long time to run depending on the complexity of the CAD 
+    model. For a model with 3000+ components it needs around 40 minutes.
     This script is meant to be run only once. Running this script is a necessary step 
     to later run the :ref:`CSV generator` script.
 
