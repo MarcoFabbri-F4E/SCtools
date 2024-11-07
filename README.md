@@ -1,7 +1,7 @@
-![GitHub last commit](https://img.shields.io/github/last-commit/Radiation-Transport/RadModeling)
-![GitHub issues](https://img.shields.io/github/issues/Radiation-Transport/RadModeling)
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Radiation-Transport/RadModeling)
-![GitHub top language](https://img.shields.io/github/languages/top/Radiation-Transport/RadModeling)
+![GitHub last commit](https://img.shields.io/github/last-commit/Fusion4Energy/RadModeling)
+![GitHub issues](https://img.shields.io/github/issues/Fusion4Energy/RadModeling)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Fusion4Energy/RadModeling)
+![GitHub top language](https://img.shields.io/github/languages/top/Fusion4Energy/RadModeling)
 ![](https://img.shields.io/badge/license-EU%20PL-blue)
 
 ![RadModeling Logo](docs/source/_static/logo.png) 
