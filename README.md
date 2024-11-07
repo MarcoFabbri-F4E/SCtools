@@ -11,7 +11,7 @@ RadModeling is a collection of several scripts. Many of them are written in Iron
 be imported directly into SpaceClaim. Other scripts are meant to be run with CPython. 
 Please refer to the documentation of each tool to understand how to use it.
 
-Please take a look at the online documentation in [here](https://www.readthedocs.com/).
+Please take a look at the online documentation in [here](https://radmodeling.readthedocs.io/en/latest/).
 
 <video width="90%" max-width="1080px" controls autoplay loop muted>
   <source src="docs/source/_static/SpaceClaim_adjust_volume.mp4" type="video/mp4">
