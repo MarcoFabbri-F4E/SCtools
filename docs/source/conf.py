@@ -13,7 +13,7 @@ release = "2.0"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx.ext.autosectionlabel", "pydata_sphinx_theme"]
+extensions = ["sphinx.ext.autosectionlabel"]
 
 templates_path = ["_templates"]
 exclude_patterns = []
