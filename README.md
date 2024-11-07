@@ -1,26 +1,73 @@
-![GitHub last commit](https://img.shields.io/github/last-commit/Radiation-Transport/SCtools)
-![GitHub issues](https://img.shields.io/github/issues/Radiation-Transport/SCtools)
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Radiation-Transport/SCtools)
-![GitHub top language](https://img.shields.io/github/languages/top/Radiation-Transport/SCtools)
+![GitHub last commit](https://img.shields.io/github/last-commit/Radiation-Transport/RadModeling)
+![GitHub issues](https://img.shields.io/github/issues/Radiation-Transport/RadModeling)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Radiation-Transport/RadModeling)
+![GitHub top language](https://img.shields.io/github/languages/top/Radiation-Transport/RadModeling)
 ![](https://img.shields.io/badge/license-EU%20PL-blue)
 
-# SCtools
-This is a package grouping a set of useful IronPython routines to manipulate/analyse/modify CAD files in SpaceClaim environment.
+![RadModeling Logo](docs/source/_static/logo.png) 
+# RadModeling
 
-SCtools contains many independent tools.
+RadModeling is a collection of several scripts. Many of them are written in IronPython and can 
+be imported directly into SpaceClaim. Other scripts are meant to be run with CPython. 
+Please refer to the documentation of each tool to understand how to use it.
 
-## Index of scripts
-- [`adjust_by_material.py`](sctools/adjust_by_material.py) automatic CAD operations that modify a component to mantain its original volume
-- [`cad_to_mcnp_comparison`](sctools/cad_to_mcnp_comparison/) automatized the generation of reports which compare slice plots from both SpaceClaim and the MCNP plotter.
-- [`csv_generator.py`](sctools/csv_generator.py) generates or updates a CSV file that tracks important information like original and simplified volume of every component of a CAD file. It is the basis for many other SCtools scripts.
-- [`detect_torus.py`](sctools/detect_torus.py) paints in a shining and opaque red color all the bodies that contain toroidal surfaces for easy identification
-- [`detect_volumes_to_adjust.py`](sctools/detect_volumes_to_adjust.py) paints in a shining and opaque red all the components with a volume deviation from the original one higher than a limit while painting all the other components in a transparent blue. This allows easy identification of components that require extra work, they are easily fixed with the use of [`adjust_by_material.py`](sctools/adjust_by_material.py).
-- [`fmesh_tally_card_generator.py`](sctools/fmesh_tally_card_generator.py) select a prismatic body in SpaceClaim and automatically generates the FMESH and TR card definitions for the prism of those dimensions and roto-translation.
-- [`load_csv_points.py`](sctools/load_csv_points.py) is a simple script that allows to read a .csv file containing points coordinates and render them as spheres in SpaceClaim.
-- [`mcnp_materials_from_csv.py`](sctools/mcnp_materials_from_csv.py) automatically updates a MCNP input file with the material, density, DCF, comments and naming found in the CSV file generated with [`csv_generator.py`](sctools/csv_generator.py).
-- [`report_generation`](sctools/report_generation/) generates reports that show CAD comparisons between original and simplified components. 
-- [`save_step.py`](sctools/save_step.py) automatically exports a SpaceClaim CAD document into STEP format in a way that will maintain the component hierarchy order after MCNP conversion via SuperMC.
-- [`show_by_material.py`](sctools/show_by_material.py) select a material as found in the CSV file and only the components that make use of that material will be visible
+Please take a look at the online documentation in [here](https://www.readthedocs.com/).
+
+<video width="90%" max-width="1080px" controls autoplay loop muted>
+  <source src="docs/source/_static/SpaceClaim_adjust_volume.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+## List of tools
+
+* `CSV workflow`. A set of scripts that greatly streamline and 
+  facilitate the CAD to MCNP process.
+
+  * `Prepare CAD`. Prepares the CAD model for the 
+    workflow. It makes all the components independent of each other and assigns a to 
+    each a unique ID.
+  * `CSV generator`. Generates or updates the CSV file
+    that contains all the information of the model as read by SpaceClaim.
+  * `Detect volumes to adjust`. Highlights 
+    the components that exceed the maximum volume deviation after simplification.
+  * `Adjust volume`. Automatically extrudes the
+    selected faces of a component to match the original volume of the component.
+  * `Show by material`. Display only the components
+    made of a selected list of materials.
+  * `Save STEP`. Saves the CAD model as a STEP file
+    in a way that the MCNP cell IDs will match the order of the CAD components.
+  * `MCNP materials from CSV`. Updates the
+    MCNP file with the materials, densities, density correction factors and component 
+    names from the CSV file.
+
+* `CAD to MCNP comparison`. This tool compares the 
+  geometry of a CAD file in SpaceClaim with the geometry of the MCNP input file 
+  generated from it. It can be used to check that the geometry in the CAD file is
+  correctly translated to the MCNP input file.
+
+* `Miscellaneous`. Set of one-off scripts that perform an 
+  independent task.
+
+  * `Elbow to cylinder`. Converts the toroidal elbows typically
+    found in pipes in a set of cylinders.
+  * `Detect torus`. Highlights all the bodies that 
+    contain a toroidal surface.
+  * `FMESH tally generator`. Generates a 
+    FMESH tally card for MCNP from an arbitrarily sized and place SpaceClaim prismatic 
+    body.
+  * `Load CSV points`. Generates a set of points 
+    in SpaceClaim from a CSV file. Synergizes with F4Enix lost particles features.
+  * `Simplify toroidal profiles`. Simplifies the toroidal profile of a body 
+    substituing the curves of its section with straight lines with a given angle between
+    them.
+
+* `Legacy`. Set of scripts that are either obsolete or outdated but may be useful
+  in an future update.
+
+  * `Report generation`. Automatically generates a 
+    report with images and information of each component.
+  * `Piping from CSV`. Generates a set of pipes from information read from a CSV 
+    file. 
 
 
 ## License

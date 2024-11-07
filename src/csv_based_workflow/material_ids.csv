@@ -1,0 +1,39 @@
+MATERIAL,ID
+Void,0
+Plasma ,1
+316L,2
+316LN,3
+Insulator,4
+304,5
+Graphite,7
+Upper Divertor Base,8
+VVTS,9
+CTS,10
+TFC SCM,11
+CS Coil,12
+VV inner coil,13
+"EFC 1, 2, 5, 6",15
+"EFC 3, 4",16
+Lower divertor base,17
+Lower divertor heatsink,18
+STB base,19
+STB heatsink,20
+Air,21
+Concrete,23
+VV inner space pure water,30
+VV inner space borated water,31
+Lead,32
+Borated polyethylene,33
+Silicon,34
+Silica,35
+316,36
+304L,37
+Carbon steel,38
+PEEK,39
+VITON,40
+Copper,41
+Glass,42
+Al 6061,43
+Ti6Al4V,44
+SS440,45
+SS4118,46
