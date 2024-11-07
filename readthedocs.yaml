@@ -32,5 +32,3 @@ sphinx:
 python:
   install:
     - requirements: docs/source/requirements.txt
-    - pip:
-        - pydata-sphinx-theme
