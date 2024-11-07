@@ -1,7 +1,7 @@
 Usage
 =====
 
-There are two types of scripts in SCtools: IronPython scripts and CPython scripts. 
+There are two types of scripts in RadModeling: IronPython scripts and CPython scripts. 
 IronPython scripts are meant to be imported directly into SpaceClaim. CPython scripts
 are meant to be run typically in a command prompt with Python3 installed. This page
 explains how to run the scripts in a general way, please refer to the documentation of 

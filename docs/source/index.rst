@@ -1,28 +1,50 @@
-.. SCtools documentation master file, created by
+.. RadModeling documentation master file, created by
    sphinx-quickstart on Mon Nov  4 14:51:01 2024.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-SCtools documentation
-=====================
+RadModeling documentation
+=========================
 
-This is the documentation for SCtools, a repository to manipulate and analyze CAD files 
+This is the documentation for RadModeling, a repository to manipulate and analyze CAD files 
 in SpaceClaim and their related MCNP input files.
 
-SCtools is a collection of several scripts. Many of them are written in IronPython and can 
+RadModeling is a collection of several scripts. Many of them are written in IronPython and can 
 be imported directly into SpaceClaim. Other scripts are meant to be run with CPython. 
 Please refer to the documentation of each tool to understand how to use it.
 
-The source code is hosted on `GitHub <https://github.com/Fusion4Energy/SCtools>`_.
+The source code is hosted on `GitHub <https://github.com/Fusion4Energy/RadModeling>`_.
 
 .. raw:: html
 
    <div style="text-align: center;">
-     <video style="width: 60%; max-width: 1080px;" controls autoplay loop muted>
-       <source src="_static/SpaceClaim_adjust_volume.mp4" type="video/mp4">
+     <video id="videoPlayer" style="width: 80%; max-width: 1080px;" controls autoplay muted>
+       <source src="_static/SpaceClaim_detect_volumes_to_adjust.mp4" type="video/mp4">
        Your browser does not support the video tag.
      </video>
    </div>
+
+   <script>
+   document.addEventListener("DOMContentLoaded", function() {
+       var videoPlayer = document.getElementById("videoPlayer");
+       var videos = [
+           "_static/SpaceClaim_detect_volumes_to_adjust.mp4",
+           "_static/SpaceClaim_adjust_volume.mp4",
+           "_static/SpaceClaim_show_by_material.mp4",
+           "_static/SpaceClaim_detect_torus.mp4"
+       ];
+       var currentVideoIndex = 0;
+
+       videoPlayer.addEventListener("ended", function() {
+           currentVideoIndex++;
+           if (currentVideoIndex >= videos.length) {
+               currentVideoIndex = 0; // Loop back to the first video
+           }
+           videoPlayer.src = videos[currentVideoIndex];
+           videoPlayer.play();
+       });
+   });
+   </script>
 
 List of tools
 -------------
@@ -80,19 +102,6 @@ List of tools
 
    This project is under active development.
 
-.. raw:: html
-
-   <div class="video-popup">
-       <a href="Adjust volume">Hover over me</a>
-       <div class="video-content">
-           <video controls autoplay loop muted>
-               <source src="_static/Media1.mp4" type="video/mp4">
-               Your browser does not support the video tag.
-           </video>
-       </div>
-   </div>
-
-
 .. toctree::
   :maxdepth: 3
   :hidden:
@@ -102,3 +111,16 @@ List of tools
   cad_to_mcnp_comparison
   miscellaneous
   legacy
+
+.. The below code can be used to create links that show a video when hovered over.
+.. .. raw:: html
+
+..    <div class="video-popup">
+..        <a href="Adjust volume">Hover over me</a>
+..        <div class="video-content">
+..            <video controls autoplay loop muted>
+..                <source src="_static/Media1.mp4" type="video/mp4">
+..                Your browser does not support the video tag.
+..            </video>
+..        </div>
+..    </div>

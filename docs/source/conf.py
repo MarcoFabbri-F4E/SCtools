@@ -5,7 +5,7 @@
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
-project = "SCtools"
+project = "RadModeling"
 copyright = "2024, Alvaro Cubi"
 author = "Alvaro Cubi"
 release = "2.0"

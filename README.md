@@ -1,17 +1,17 @@
-![GitHub last commit](https://img.shields.io/github/last-commit/Radiation-Transport/SCtools)
-![GitHub issues](https://img.shields.io/github/issues/Radiation-Transport/SCtools)
-![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Radiation-Transport/SCtools)
-![GitHub top language](https://img.shields.io/github/languages/top/Radiation-Transport/SCtools)
+![GitHub last commit](https://img.shields.io/github/last-commit/Radiation-Transport/RadModeling)
+![GitHub issues](https://img.shields.io/github/issues/Radiation-Transport/RadModeling)
+![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Radiation-Transport/RadModeling)
+![GitHub top language](https://img.shields.io/github/languages/top/Radiation-Transport/RadModeling)
 ![](https://img.shields.io/badge/license-EU%20PL-blue)
 
-![SCtools Logo](docs/source/_static/logo.png) 
-# SCtools
+![RadModeling Logo](docs/source/_static/logo.png) 
+# RadModeling
 
-SCtools is a collection of several scripts. Many of them are written in IronPython and can 
+RadModeling is a collection of several scripts. Many of them are written in IronPython and can 
 be imported directly into SpaceClaim. Other scripts are meant to be run with CPython. 
 Please refer to the documentation of each tool to understand how to use it.
 
-Please take a look at the online documentation in [here](https://www.google.com/).
+Please take a look at the online documentation in [here](https://www.readthedocs.com/).
 
 <video width="90%" max-width="1080px" controls autoplay loop muted>
   <source src="docs/source/_static/SpaceClaim_adjust_volume.mp4" type="video/mp4">
