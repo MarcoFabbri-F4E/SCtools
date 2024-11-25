@@ -1,5 +1,5 @@
 docs/build/
-__pycashe__/
+__pycache__/
 *.mcnp*
 *.db
 *.csv
