@@ -1,4 +1,6 @@
 docs/build/
+__pycashe__
 *.mcnp*
+*.db
 *.csv
 !materials_id.csv
