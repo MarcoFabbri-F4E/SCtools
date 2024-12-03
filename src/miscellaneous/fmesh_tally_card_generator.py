@@ -12,18 +12,15 @@ def main():
     body = Selection.GetActive().Items[0]
     check_is_hexaedron(body)
 
-    points = get_8_points(body)
-    points = convert_to_cm(points)
-    origin = get_point_closest_to_origin(points)
-    points.remove(origin)
+    bottom_left_point = get_bottom_left_point(body)
+    unordered_axes = get_unordered_axes(body, bottom_left_point)
+    axes = order_axes_as_xyz(unordered_axes, bottom_left_point)
+    vectors = convert_edges_to_vectors(axes, bottom_left_point)
 
-    all_vectors = get_vectors_from_origin(points, origin)
-    axes = get_axes(all_vectors)
-    axes = order_axes_closer_to_xyz(axes)
-    imesh, jmesh, kmesh = (vec.Magnitude for vec in axes)
-
-    matrix = [normalize(vec) for vec in axes]
-    matrix.insert(0, origin)
+    imesh, jmesh, kmesh = (vec.Magnitude * 100 for vec in vectors)
+    matrix = [normalize(vec) for vec in vectors]
+    bottom_left_point_cm = bottom_left_point * 100
+    matrix.insert(0, bottom_left_point_cm)
 
     print_cards(imesh, jmesh, kmesh, matrix)
 
@@ -39,97 +36,71 @@ def check_is_hexaedron(body):
             MessageBox.Show("The surfaces are not all Planes")
             raise AssertionError()
 
-    return True
+
+def get_bottom_left_point(body):
+    edges = body.Edges
+    edge = edges[0]
+    bottom_left = edge.EvalStart().Point
+    for edge in edges:
+        for point in (edge.EvalStart().Point, edge.EvalEnd().Point):
+            if point.X < bottom_left.X:
+                bottom_left = point
+            elif point.Y < bottom_left.Y:
+                bottom_left = point
+            elif point.Z < bottom_left.Z:
+                bottom_left = point
+
+    return bottom_left
 
 
-def get_8_points(body):
-    repeated_points = []
-    for face in body.Faces:
-        for edge in face.Edges:
-            repeated_points.append(edge.EvalStart().Point)
-            repeated_points.append(edge.EvalEnd().Point)
-
-    points = []
-    for point in repeated_points:
-        if point not in points:
-            points.append(point)
-
-    return points
+def get_unordered_axes(body, bottom_left_point):
+    edges = body.Edges
+    axes = []
+    for edge in edges:
+        for point in (edge.EvalStart().Point, edge.EvalEnd().Point):
+            if point == bottom_left_point:
+                axes.append(edge)
+    return axes
 
 
-def convert_to_cm(points_m):
-    points_cm = []
-    for point_m in points_m:
-        points_cm.append(point_m * 100)
-    return points_cm
+def order_axes_as_xyz(unordered_axes, bottom_left_point):
+    x_axis = unordered_axes[0]
+    for axis in unordered_axes:
+        if (
+            get_other_point_from_edge(axis, bottom_left_point).X
+            > get_other_point_from_edge(x_axis, bottom_left_point).X
+        ):
+            x_axis = axis
+    y_axis = unordered_axes[0]
+    for axis in unordered_axes:
+        if (
+            get_other_point_from_edge(axis, bottom_left_point).Y
+            > get_other_point_from_edge(y_axis, bottom_left_point).Y
+        ):
+            y_axis = axis
+    z_axis = unordered_axes[0]
+    for axis in unordered_axes:
+        if (
+            get_other_point_from_edge(axis, bottom_left_point).Z
+            > get_other_point_from_edge(z_axis, bottom_left_point).Z
+        ):
+            z_axis = axis
+    return [x_axis, y_axis, z_axis]
 
 
-def get_point_closest_to_origin(points):
-    origin = points[0]
-    for point in points:
-        if point.Vector.Magnitude < origin.Vector.Magnitude:
-            origin = point
-
-    return origin
+def get_other_point_from_edge(edge, point):
+    if edge.EvalStart().Point == point:
+        return edge.EvalEnd().Point
+    return edge.EvalStart().Point
 
 
-def get_vectors_from_origin(points, origin):
+def convert_edges_to_vectors(axes, bottom_left_point):
     vectors = []
-    for point in points:
-        vectors.append(point - origin)
+    for axis in axes:
+        vectors.append(
+            get_other_point_from_edge(axis, bottom_left_point) - bottom_left_point
+        )
     return vectors
-
-
-def get_smallest_vector(vectors):
-    smallest_vector = vectors[0]
-    for vector in vectors:
-        if vector.Magnitude < smallest_vector.Magnitude:
-            smallest_vector = vector
-    return smallest_vector
-
-
-def get_axes(vectors):
-    vec_1 = get_smallest_vector(vectors)
-    vectors.remove(vec_1)
-    vec_2 = get_smallest_vector(vectors)
-    vectors.remove(vec_2)
-
-    normal = Vector.Cross(vec_1, vec_2)
-
-    epsilon = 1e-5
-    for vector in vectors:
-        if Vector.Cross(vector, normal).Magnitude < epsilon:
-            vec_3 = vector
-            return [vec_1, vec_2, vec_3]
-
-    raise AssertionError("Could not find the Z-Axis")
-
-
-def order_axes_closer_to_xyz(axes):
-    x = Vector.Create(1, 0, 0)
-    x_axe = axes[0]
-    for axe in axes:
-        if (
-            Vector.Cross(x, normalize(axe)).Magnitude
-            < Vector.Cross(x, normalize(x_axe)).Magnitude
-        ):
-            x_axe = axe
-
-    axes.remove(x_axe)
-
-    y = Vector.Create(0, 1, 0)
-    y_axe = axes[0]
-    for axe in axes:
-        if (
-            Vector.Cross(y, normalize(axe)).Magnitude
-            < Vector.Cross(y, normalize(y_axe)).Magnitude
-        ):
-            y_axe = axe
-
-    axes.remove(y_axe)
-    z_axe = axes[0]
-
-    return [x_axe, y_axe, z_axe]
 
 
 def normalize(vec):
