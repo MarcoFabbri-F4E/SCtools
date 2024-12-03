@@ -5,8 +5,8 @@ from math import isclose
 import pandas as pd
 from numjuggler import parser as mp
 
-MCNP_INPUT_FILEPATH = "testing_INDEPENDENT.mcnp"
-CSV_FILEPATH = "testing_INDEPENDENT.csv"
+MCNP_INPUT_FILEPATH = "testing.mcnp"
+CSV_FILEPATH = "testing.csv"
 MATERIAL_IDS_FILEPATH = "material_ids.csv"
 FIRST_CELL_ID = 1
 
@@ -120,7 +120,7 @@ class Processor:
         return density_correction_factor
 
     def _get_material_id_and_density(
-        self, row: pd.Series, cell_id: str, density_correction_factor: float
+        self, row: pd.Series, cell_id: int, density_correction_factor: float
     ):
         material_name = row["MATERIAL"]
 
