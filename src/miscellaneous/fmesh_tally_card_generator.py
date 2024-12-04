@@ -40,17 +40,26 @@ def check_is_hexaedron(body):
 def get_bottom_left_point(body):
     edges = body.Edges
     edge = edges[0]
-    bottom_left = edge.EvalStart().Point
+    bottom_left_1 = edge.EvalStart().Point
     for edge in edges:
         for point in (edge.EvalStart().Point, edge.EvalEnd().Point):
-            if point.X < bottom_left.X:
-                bottom_left = point
-            elif point.Y < bottom_left.Y:
-                bottom_left = point
-            elif point.Z < bottom_left.Z:
-                bottom_left = point
+            if get_xy_combination(point) < get_xy_combination(bottom_left_1):
+                bottom_left_1 = point
+    bottom_left_2 = edge.EvalEnd().Point
+    for edge in edges:
+        for point in (edge.EvalStart().Point, edge.EvalEnd().Point):
+            if point == bottom_left_1:
+                continue
+            if get_xy_combination(point) < get_xy_combination(bottom_left_2):
+                bottom_left_2 = point
 
-    return bottom_left
+    if bottom_left_1.Z < bottom_left_2.Z:
+        return bottom_left_1
+    return bottom_left_2
+
+
+def get_xy_combination(point):
+    return point.X + point.Y
 
 
 def get_unordered_axes(body, bottom_left_point):
