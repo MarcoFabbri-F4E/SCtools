@@ -170,6 +170,8 @@ class CSVGenerator:
             if key in self.dict_components:
                 spaceclaim_comp = self.dict_components[key]
 
+                combined_comp.number_of_bodies = spaceclaim_comp.number_of_bodies
+
                 volume_info = combined_comp.volume_info
                 volume_info.simplified = spaceclaim_comp.volume_info.original
                 volume_info.difference = (
