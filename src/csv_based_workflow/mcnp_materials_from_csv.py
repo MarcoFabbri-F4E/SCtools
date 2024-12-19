@@ -122,10 +122,10 @@ class Processor:
     def _get_material_id_and_density(
         self, row: pd.Series, cell_id: int, density_correction_factor: float
     ):
-        material_name = row["MATERIAL"]
+        material_name = str(row["MATERIAL"])
 
         # Void material
-        if str(material_name) in ("nan", "Void"):
+        if material_name in ("nan", "Void"):
             return "0", ""
 
         # If the material is not in the dictionary, add it
