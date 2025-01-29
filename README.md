@@ -24,8 +24,8 @@ Please take a look at the online documentation in [here](https://radmodeling.rea
   facilitate the CAD to MCNP process.
 
   * `Prepare CAD`. Prepares the CAD model for the 
-    workflow. It makes all the components independent of each other and assigns a to 
-    each a unique ID.
+    workflow. It makes all the components independent of each other and assigns a unique ID to 
+    each.
   * `CSV generator`. Generates or updates the CSV file
     that contains all the information of the model as read by SpaceClaim.
   * `Detect volumes to adjust`. Highlights 
@@ -58,7 +58,7 @@ Please take a look at the online documentation in [here](https://radmodeling.rea
   * `Load CSV points`. Generates a set of points 
     in SpaceClaim from a CSV file. Synergizes with F4Enix lost particles features.
   * `Simplify toroidal profiles`. Simplifies the toroidal profile of a body 
-    substituing the curves of its section with straight lines with a given angle between
+    substituting the curves of its section with straight lines with a given angle between
     them.
 
 * `Legacy`. Set of scripts that are either obsolete or outdated but may be useful
